@@ -11,5 +11,5 @@ An example serverless API structure can be seen in /pages/api/opt-in.js and the 
 
 I've also chosen to use Sass, Bootstrap 4's semantic CSS (to come), and extend the air-bnb eslint config.
 
-![alt text](https://github.com/newbluestudios/PatronusConcept/blob/master/public/images/CrazyFingers.jpg?raw=true)
+![alt text](https://github.com/newbluestudios/PatronusConcept/blob/master/public/images/Dashboard.png?raw=true)
 
