@@ -27,6 +27,7 @@ export default () => {
     Router.prefetch('/')
   }, [])
 
+  //TODO: Client-side validation ie. well-formatted strings
   return (
     <form onSubmit={handleSubmit}>
       <label>

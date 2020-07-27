@@ -1,16 +1,16 @@
 import _ from 'lodash'
 
+//TODO: Eventually all API endpoints should simply import a single instance of airtable
 const airtable = require('airtable')
-const twilio = require('twilio')
 
+//TODO: server-side validation
 export default (req, res) => {
   if (req.method === 'POST') {
-    console.log('post')
+    const {name, phone} = _.get(req, 'body')
+    res.status(200).json({name, phone});
   } else {
-    console.log('not post')
+    res.status(200).json({empty: 'field'});
   }
   
-  const {name, phone} = _.get(req, 'body')
-  console.log('🤖 -Server Side - ', req.body)
-  res.status(200).json({name, phone});
+  
 };
