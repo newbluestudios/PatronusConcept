@@ -1,0 +1,8 @@
+  // This file is used to allow absolute paths for imports
+  // eg import {foo} from /topLevelDirectory/bar
+
+  {
+    "compilerOptions":{
+      "baseUrl":"."
+    }
+  }

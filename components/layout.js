@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from './layout.module.sass'
-import utilStyles from '../styles/utils.module.sass'
+import utilStyles from 'styles/utils.module.sass'
 import Link from 'next/link'
 
 const name = 'Patronus and the Grateful Dead'

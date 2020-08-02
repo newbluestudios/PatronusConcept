@@ -1,5 +1,4 @@
-import Airtable from 'airtable'
-
+import { airtable } from 'lib/utils'
 
 export default ({contacts}) =>(
 
@@ -19,10 +18,6 @@ export default ({contacts}) =>(
 )
 
 export async function getStaticProps(){
-
-  const airtable = new Airtable({
-    apiKey: process.env.AIRTABLE_API_KEY
-  })
 
   const records = await airtable.base('applHFO4UZvaLxWfC')('Contacts').select({
     fields:['Name','Phone']

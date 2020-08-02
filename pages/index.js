@@ -1,10 +1,13 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
-import utilStyles from '../styles/utils.module.sass'
+import Layout from 'components/layout'
+import utilStyles from 'styles/utils.module.sass'
 import OptIn from './opt-in.js'
 import Link from 'next/link'
+import {airtable} from 'lib/utils'
+import _ from 'lodash'
 
-export default function Home() {
+export default function Home({locations}) {
+  
   return (
     <Layout home>
       <Head>
@@ -13,6 +16,10 @@ export default function Home() {
       <section className={utilStyles.headingMd}>
         <p>
           Here's a simple form that corresponds to a serverless API endpoint at /api/opt-in
+        </p>
+        <p>
+          And a list of locations that we moniter:
+          {_.map(locations,(location)=>(<div>{_.get(location,'name')}</div>))}
         </p>
       </section>
       <Link href="/business">
@@ -24,4 +31,22 @@ export default function Home() {
       </section>
     </Layout>
   )
+}
+
+export async function getStaticProps(){
+  
+  const records = await airtable.base('applHFO4UZvaLxWfC')('Locations').select({
+    fields:['Name']
+  }).all()  
+
+  const locations = records.map((location)=>({
+    name: location.get('Name') 
+  }))
+  
+  return {
+    props:{
+      locations
+    }
+  }
+
 }
