@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from 'components/layout'
 import utilStyles from 'styles/utils.module.sass'
-import OptIn from './opt-in.js'
+
 import Link from 'next/link'
 import {airtable} from 'lib/utils'
 import _ from 'lodash'
@@ -27,7 +27,6 @@ export default function Home({locations}) {
       </Link>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Form</h2>
-       <OptIn/>
       </section>
     </Layout>
   )
@@ -35,7 +34,7 @@ export default function Home({locations}) {
 
 export async function getStaticProps(){
   
-  const records = await airtable.base('applHFO4UZvaLxWfC')('Locations').select({
+  const records = await airtable.base('appIoiEwd611Odtso')('Locations').select({
     fields:['Name']
   }).all()  
 

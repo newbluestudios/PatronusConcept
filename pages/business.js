@@ -19,7 +19,7 @@ export default ({contacts}) =>(
 
 export async function getStaticProps(){
 
-  const records = await airtable.base('applHFO4UZvaLxWfC')('Contacts').select({
+  const records = await airtable.base('appIoiEwd611Odtso')('Contacts').select({
     fields:['Name','Phone']
   }).all()
 
