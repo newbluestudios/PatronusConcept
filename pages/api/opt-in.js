@@ -1,12 +1,12 @@
 import _ from 'lodash'
-import {airtableLocations, airtableContacts} from 'lib/utils'
+import { airtableContacts } from 'lib/utils'
 
 //TODO: server-side validation & push to Airtable
 export default async (req, res) => {
   if (req.method === 'POST') {
     const {firstName, lastName, email, phone, locationId} = _.get(req, 'body')
 
-    airtableContacts.create([
+    await airtableContacts.create([
       {
         "fields": {
           "Location": [
@@ -28,10 +28,7 @@ export default async (req, res) => {
       });
     });
 
-    // res.status(200).json({name, phone});
-
   } else { // Not a POST
-    
     res.status(200).json({empty: 'field'});
   }
 };

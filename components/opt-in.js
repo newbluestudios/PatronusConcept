@@ -1,10 +1,10 @@
 import React, {useState, useCallback, useEffect } from 'react'
-import Router from 'next/router'
+
 import _ from 'lodash'
 
 //locationId corresponds to Location locationId and comes from /[location]
 export default ({locationId}) => {
-console.log('🧨',locationId)
+
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')

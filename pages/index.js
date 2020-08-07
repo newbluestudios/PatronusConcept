@@ -2,8 +2,7 @@ import Head from 'next/head'
 import Layout from 'components/layout'
 import utilStyles from 'styles/utils.module.sass'
 
-import Link from 'next/link'
-import {airtable} from 'lib/utils'
+import {airtableLocations} from 'lib/utils'
 import _ from 'lodash'
 
 export default function Home({locations}) {
@@ -22,9 +21,6 @@ export default function Home({locations}) {
           {_.map(locations,(location)=>(<div>{_.get(location,'name')}</div>))}
         </p>
       </section>
-      <Link href="/business">
-        <a>← Check out some Airtable users</a>
-      </Link>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Form</h2>
       </section>
@@ -34,7 +30,7 @@ export default function Home({locations}) {
 
 export async function getStaticProps(){
   
-  const records = await airtable.base('appIoiEwd611Odtso')('Locations').select({
+  const records = await airtableLocations.select({
     fields:['Name']
   }).all()  
 

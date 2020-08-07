@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {airtableLocations} from 'lib/utils'
 import _ from 'lodash'
 import OptIn from 'components/opt-in'
+import Status from 'components/status'
 
 function Location({contacts, locationId}) {
   
@@ -13,6 +14,7 @@ function Location({contacts, locationId}) {
       <Head>
         <title>Location</title>
       </Head>
+      <Status locationId={locationId}/>
       <section className={utilStyles.headingMd}>
         <p>
         {_.map(contacts,(contact)=>(<div>{_.get(contact,'name')}</div>))}
@@ -28,7 +30,6 @@ function Location({contacts, locationId}) {
 
 // TODO: Performance improvement could be gained by writing airtable location name and id to browser cache as described here:
 // https://github.com/vercel/next.js/issues/10933#issuecomment-598297975
-
 export async function getStaticPaths(){
   
   const records = await airtableLocations.select({
@@ -50,9 +51,9 @@ export async function getStaticProps({params}){
   const records = await airtableLocations.select({
     filterByFormula: `name="${location}"`
   }).all()
-  
+
   const locationId = _.get(records[0],'id')
-  
+
   return {
     props:{
       locationId
